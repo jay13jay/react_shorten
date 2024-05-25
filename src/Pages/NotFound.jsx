@@ -1,5 +1,4 @@
 import Navigate from "../Components/Navigate";
-import { Row, Col } from "react-bootstrap";
 function NotFound() {
     return (
         <>
