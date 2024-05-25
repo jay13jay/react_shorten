@@ -1,6 +1,7 @@
-import { Container } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
+import { FaClipboardList } from "react-icons/fa";
 import Navigate from "../Components/Navigate";
 import UrlForm from "../Components/URLForm";
 
@@ -51,9 +52,10 @@ function ShortenPage() {
                 setIsLoading(false);
                 
             } catch (err) {
-                if (err.name === "AbortError") {
                 setError(err.message);
-                }
+                // if (err.name === "AbortError") {
+                //  setError(err.message);
+                // }
                 setIsLoading(false);
             }
         }
@@ -70,11 +72,34 @@ function ShortenPage() {
                 <Navigate />
             </header>
                 <Container className="justify-content-center">
-                    <div className="main-container">
-                        <h1>Shorten Page</h1>
-                        <UrlForm handleSubmit={handleSubmit}/>
-                        { retData && <p> Short URL: {retData.url}</p>}
-                    </div>
+                    <Row>
+                        <Col></Col>
+                        <Col>
+                            <h1 className="page-title">Shorten Page</h1>
+                        </Col>
+                        <Col></Col>
+                    </Row>
+                    <Row>
+                        <Container className="form-group justify-content-center">
+                            <UrlForm handleSubmit={handleSubmit}/>
+                            <Button 
+                                className="submit-button"
+                                variant="primary" 
+                                type="submit" 
+                                onClick={handleSubmit}>
+                                    Shorten
+                            </Button>
+                        </Container>
+                        <Container className="form-group justify-content-center">
+                            {isLoading && <p>Loading...</p>}
+                            {error && <p className="error error-message">{error}</p>}
+                            { retData && <p> Short URL:
+                                <a href={retData.url}> {retData.url}</a>
+                                <FaClipboardList name="copy"
+                                    onClick={() => navigator.clipboard.writeText(retData.url)} />
+                                </p>}
+                        </Container>
+                    </Row>
                 </Container>
         </>
     )

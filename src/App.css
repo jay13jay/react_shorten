@@ -14,17 +14,51 @@ body {
   margin: 1rem;
 }
 
-.url-form {
-  margin: 3rem;
+.page-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  place-items: center;
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.submit-button {
+  place-content: center;
+  margin-left: 1rem;
+}
+
+.url-form:hover {
+  background-color: #dedcdc;
+}
+
+.error {
+  color: white;
+  padding: 1rem;
+  background-color: red;
+}
+.error:hover {
+  background-color: darkred;
 }
 
 .error-message {
+  border: 1px solid black;
+  border-radius: 3rem;
   margin: 0;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   place-items: center;
   min-width: 320px;
-  min-height: 75vh;
+  /* min-height: 75vh; */
 }
