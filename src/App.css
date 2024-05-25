@@ -51,9 +51,10 @@ body {
 
 .error-message {
   border: 1px solid black;
+  color: red;
   border-radius: 3rem;
-  margin: 0;
-  margin-bottom: 1rem;
+  margin: 1rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;

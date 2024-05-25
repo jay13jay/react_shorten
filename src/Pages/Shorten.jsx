@@ -12,10 +12,19 @@ function ShortenPage() {
     const [error, setError] = useState('');
     const [query, setQuery] = useState("");
     const [retData, setRetData] = useState("");
+    const [isCopied, setIsCopied] = useState(false);
 
     const handleSubmit = (url) => {
+        setIsCopied(false);
         setQuery(url);
     }
+
+    const handleCopy = () => {
+        navigator.clipboard
+          .writeText(retData.url)
+          .then(() => setIsCopied(true))
+          
+    };
 
     useEffect(function() {
         async function fetchData() {
@@ -93,11 +102,15 @@ function ShortenPage() {
                         <Container className="form-group justify-content-center">
                             {isLoading && <p>Loading...</p>}
                             {error && <p className="error error-message">{error}</p>}
-                            { retData && <p> Short URL:
-                                <a href={retData.url}> {retData.url}</a>
-                                <FaClipboardList name="copy"
-                                    onClick={() => navigator.clipboard.writeText(retData.url)} />
-                                </p>}
+                            { retData &&
+                                <>
+                                    <p> Short URL: <a href={retData.url}> {retData.url}</a> </p>
+                                    <Button className="submit-button" variant="primary" type="submit" onClick={handleCopy}>
+                                        {isCopied ? "Copied!" : "Copy"}
+                                    <FaClipboardList name="copy" />
+                                    </Button>
+                                </>
+                            }
                         </Container>
                     </Row>
                 </Container>

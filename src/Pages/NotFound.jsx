@@ -5,7 +5,7 @@ function NotFound() {
             <Navigate />
             <div className="main-container">
                 <div className="error-message">
-                    <h1>404 - Page Not Found</h1>
+                    <h3>404 - Page Not Found</h3>
                     <p>Please try another page 🙃</p>
                 </div>
             </div>
